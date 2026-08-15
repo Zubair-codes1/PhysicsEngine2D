@@ -28,6 +28,20 @@ int main() {
                 }
                 
             }
+
+            else if (auto* key = event->getIf<sf::Event::KeyPressed>()) {
+                if (key->code == sf::Keyboard::Key::Q) {
+                    shape.setRadius(shape.getRadius() * 1.5);
+                }
+
+                else if (key->code == sf::Keyboard::Key::W) {
+                    shape.setRadius(shape.getRadius() / 1.5);
+                }
+
+                else if (key->code == sf::Keyboard::Key::A) {
+                    shape.setFillColor(sf::Color::Cyan);
+                }
+            }
         }
 
         window.clear();
