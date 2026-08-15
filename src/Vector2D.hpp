@@ -16,7 +16,7 @@ namespace physics {
         }
 
 
-        [[nodiscard]] Vector2D operator+(const Vector2D addedVector) {
+        [[nodiscard]] Vector2D operator+=(const Vector2D addedVector) {
             this->xPos += addedVector.xPos;
             this->yPos += addedVector.yPos;
 
@@ -33,6 +33,13 @@ namespace physics {
         [[nodiscard]] Vector2D operator*(const Vector2D multipliedVector) {
             this->xPos *= multipliedVector.xPos;
             this->yPos *= multipliedVector.yPos;
+
+            return *this;
+        }
+
+        [[nodiscard]] Vector2D multiply_scalar(const float scalar) {
+            this->xPos *= scalar;
+            this->yPos *= scalar;
 
             return *this;
         }
@@ -55,6 +62,5 @@ namespace physics {
     };
 
 }
-
 
 #endif
