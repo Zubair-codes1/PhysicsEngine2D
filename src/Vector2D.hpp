@@ -44,7 +44,15 @@ namespace physics {
             return *this;
         }
 
-    }
+        [[nodiscard]] float dot_product(const Vector2D dotVector) const {
+            return (this->xPos * dotVector.xPos + this->yPos * dotVector.yPos);
+        }
+
+        [[nodiscard]] float cross_product(const Vector2D crossVector) const {
+            return (this->xPos * crossVector.yPos - this->yPos * crossVector.xPos);
+        }
+
+    };
 
 }
 
