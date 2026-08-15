@@ -18,17 +18,22 @@ int main() {
             if (event->is<sf::Event::Closed>()) {
                 window.close();
             }
+
+            else if (auto* key = event->getIf<sf::Event::MouseButtonPressed>()) {
+                if (key->button == sf::Mouse::Button::Left) {
+
+                    sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+
+                    shape.setPosition(sf::Vector2f((float) mousePosition.x - radius, (float) mousePosition.y - radius));
+                }
+                
+            }
         }
 
         window.clear();
 
-        if (sf::Mouse::isButtonPressed(mouseLeftButton)) {
-            sf::Vector2i mousePosition = sf::Mouse::getPosition();
-            shape.setPosition(sf::Vector2f(mousePosition.x, mousePosition.y));
-            window.draw(shape);
-        }
-
         window.draw(shape);
+        std::cout << shape.getPosition().x << " " << shape.getPosition().y << std::endl;
         window.display();
     }
 
