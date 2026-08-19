@@ -8,7 +8,13 @@ int main() {
     // mouse
     sf::Mouse::Button mouseLeftButton(sf::Mouse::Button::Left);
     float radius = 100.f;
+    float position_change = 5;
     sf::CircleShape shape(radius, 50.f);
+    
+    shape.setOrigin({shape.getRadius(), shape.getRadius()});
+    shape.setPosition({shape.getRadius(), shape.getRadius()});
+
+
     sf::Time pauseTime = sf::seconds(1);
     shape.setFillColor(sf::Color::Green);
 
@@ -47,7 +53,14 @@ int main() {
         window.clear();
 
         window.draw(shape);
-        std::cout << shape.getPosition().x << " " << shape.getPosition().y << std::endl;
+
+        if (shape.getPosition().y + radius == window.getSize().y) {
+            position_change *= -1;
+        }
+
+        sf::Vector2f position = shape.getPosition();
+        shape.setPosition(sf::Vector2f{position.x, position.y + position_change});
+
         window.display();
     }
 

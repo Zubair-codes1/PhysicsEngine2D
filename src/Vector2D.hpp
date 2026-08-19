@@ -9,28 +9,28 @@ namespace physics {
         float xPos;
         float yPos;
 
-        Vector2D();
+        Vector2D() {};
         Vector2D(float newXPos, float newYPos) {
             this->xPos = newXPos;
             this->yPos = newYPos;
         }
 
 
-        [[nodiscard]] Vector2D operator+=(const Vector2D addedVector) {
+        [[nodiscard]] Vector2D operator+=(const Vector2D& addedVector) {
             this->xPos += addedVector.xPos;
             this->yPos += addedVector.yPos;
 
             return *this;
         }
 
-        [[nodiscard]] Vector2D operator-(const Vector2D subtratedVector) {
+        [[nodiscard]] Vector2D operator-(const Vector2D& subtratedVector) {
             this->xPos -= subtratedVector.xPos;
             this->yPos -= subtratedVector.yPos;
 
             return *this;
         }
 
-        [[nodiscard]] Vector2D operator*(const Vector2D multipliedVector) {
+        [[nodiscard]] Vector2D operator*(const Vector2D& multipliedVector) {
             this->xPos *= multipliedVector.xPos;
             this->yPos *= multipliedVector.yPos;
 
