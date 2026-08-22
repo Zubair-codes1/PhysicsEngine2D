@@ -35,75 +35,48 @@ namespace physics {
         }
 
         // set new value
-        [[nodiscard]] Vector2D setNewValue(const Vector2D& vector) {
-            this->xPos = vector.xPos;
-            this->yPos = vector.yPos;
-
-            return *this;
+        [[nodiscard]] Vector2D setNewValue(const Vector2D& vector) const {
+            return Vector2D{vector.xPos, vector.yPos};
         }
 
         // overriding the + operator
-        [[nodiscard]] Vector2D operator+(const Vector2D& addedVector) {
-            this->xPos += addedVector.xPos;
-            this->yPos += addedVector.yPos;
-
-            return *this;
+        [[nodiscard]] Vector2D operator+(const Vector2D& addedVector) const {
+            return Vector2D{this->xPos + addedVector.xPos, this->yPos + addedVector.yPos};
         }
 
         // scalar adding
         [[nodiscard]] Vector2D add_scalar (const float scalar) {
-            this->xPos += scalar;
-            this->yPos += scalar;
-
-            return *this;
+            return Vector2D{this->xPos + scalar, this->yPos + scalar};
         }
 
         // overriding - operator
-        [[nodiscard]] Vector2D operator-(const Vector2D& subtratedVector) {
-            this->xPos -= subtratedVector.xPos;
-            this->yPos -= subtratedVector.yPos;
-
-            return *this;
+        [[nodiscard]] Vector2D operator-(const Vector2D& subtractedVector) {
+            return Vector2D{this->xPos - subtractedVector.xPos, this->yPos - subtractedVector.yPos};
         }
 
         // subtracting a scalar
         [[nodiscard]] Vector2D subtract_scalar (const float scalar) {
-            this->xPos -= scalar;
-            this->yPos -= scalar;
-
-            return *this;
+            return Vector2D{this->xPos - scalar, this->yPos - scalar};
         }
 
         // overriding * operator
         [[nodiscard]] Vector2D operator*(const Vector2D& multipliedVector) {
-            this->xPos *= multipliedVector.xPos;
-            this->yPos *= multipliedVector.yPos;
-
-            return *this;
+            return Vector2D{this->xPos * multipliedVector.xPos, this->yPos * multipliedVector.yPos};
         }
 
         // multiplying by a scalar
         [[nodiscard]] Vector2D multiply_scalar(const float scalar) {
-            this->xPos *= scalar;
-            this->yPos *= scalar;
-
-            return *this;
+            return Vector2D{this->xPos * scalar, this->yPos * scalar};
         }
 
         // divide operator
         [[nodiscard]] Vector2D operator_divide(const Vector2D divideVector) {
-            this->xPos /= divideVector.xPos;
-            this->yPos /= divideVector.yPos;
-
-            return *this;
+            return Vector2D{this->xPos / divideVector.xPos, this->yPos / divideVector.yPos};
         }
 
         // scalar division
         [[nodiscard]] Vector2D divide_scalar(const float scalar) {
-            this->xPos /= scalar;
-            this->yPos /= scalar;
-
-            return *this;
+            return Vector2D{this->xPos / scalar, this->yPos / scalar};
         }
 
         // length squared of this vector
