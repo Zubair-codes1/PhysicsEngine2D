@@ -51,10 +51,26 @@ namespace physics {
             return *this;
         }
 
+        // scalar adding
+        [[nodiscard]] Vector2D add_scalar (const float scalar) {
+            this->xPos += scalar;
+            this->yPos += scalar;
+
+            return *this;
+        }
+
         // overriding - operator
         [[nodiscard]] Vector2D operator-(const Vector2D& subtratedVector) {
             this->xPos -= subtratedVector.xPos;
             this->yPos -= subtratedVector.yPos;
+
+            return *this;
+        }
+
+        // subtracting a scalar
+        [[nodiscard]] Vector2D subtract_scalar (const float scalar) {
+            this->xPos -= scalar;
+            this->yPos -= scalar;
 
             return *this;
         }
