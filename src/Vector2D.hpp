@@ -25,6 +25,15 @@ namespace physics {
             this->yPos = vector.yPos;
         }
 
+        // negates a supplied vector
+        [[nodiscard]] Vector2D negate(const Vector2D& vector) const {
+            return Vector2D{-vector.xPos, -vector.yPos};
+        }
+
+        // negate the this vector
+        [[nodiscard]] Vector2D negateThis() const {
+            return negate(*this);
+        }
 
         [[nodiscard]] Vector2D operator+(const Vector2D& addedVector) {
             this->xPos += addedVector.xPos;
