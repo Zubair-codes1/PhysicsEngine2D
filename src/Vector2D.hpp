@@ -2,6 +2,11 @@
 
 #define VECTOR2D
 
+/**
+ * Namespace physics with Vector2D struct
+ * 
+ * @author Zubair Abdul Matin
+ */
 namespace physics {
 
     struct Vector2D {
@@ -9,14 +14,19 @@ namespace physics {
         float xPos;
         float yPos;
 
+        // constructors
         Vector2D() {};
         Vector2D(float newXPos, float newYPos) {
             this->xPos = newXPos;
             this->yPos = newYPos;
         }
+        Vector2D(const Vector2D& vector) {
+            this->xPos = vector.xPos;
+            this->yPos = vector.yPos;
+        }
 
 
-        [[nodiscard]] Vector2D operator+=(const Vector2D& addedVector) {
+        [[nodiscard]] Vector2D operator+(const Vector2D& addedVector) {
             this->xPos += addedVector.xPos;
             this->yPos += addedVector.yPos;
 
