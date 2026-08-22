@@ -18,10 +18,7 @@ namespace physics {
 
         // constructors
         Vector2D() {};
-        Vector2D(float newXPos, float newYPos) {
-            this->xPos = newXPos;
-            this->yPos = newYPos;
-        }
+        Vector2D(float newXPos, float newYPos) : xPos(newXPos), yPos(newYPos) {}
         Vector2D(const Vector2D& vector) {
             this->xPos = vector.xPos;
             this->yPos = vector.yPos;
@@ -131,7 +128,7 @@ namespace physics {
             float s = sin(radians);
 
             float x = this->xPos * c - this->yPos * s;
-            float y = this->xPos * s + this->yPos * s;
+            float y = this->xPos * s + this->yPos * c;
 
             this->xPos = x;
             this->yPos = y;
@@ -141,12 +138,12 @@ namespace physics {
          * normalising a vector (making its length/magnitude exactly 1)
          */
         void normalise() {
-            float length = vector_length();
+            float squared_sum = length_squared();
 
-            if (length > 0) {
-                float sqrt_length = sqrt(length);
-                this->xPos /= sqrt_length;
-                this->yPos /= sqrt_length;
+            if (squared_sum > 0) {
+                float length = sqrt(squared_sum);
+                this->xPos /= length;
+                this->yPos /= length;
             }
         }
 
