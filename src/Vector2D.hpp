@@ -2,6 +2,8 @@
 
 #define VECTOR2D
 
+#include <cmath>
+
 /**
  * Namespace physics with Vector2D struct
  * 
@@ -105,6 +107,26 @@ namespace physics {
             this->yPos /= scalar;
 
             return *this;
+        }
+
+        // length squared of this vector
+        [[nodiscard]] float length_squared() const {
+            return pow(this->xPos, 2) + pow(this->yPos, 2);
+        }
+
+        // length squared of another vector
+        [[nodiscard]] float length_squared_vector(const Vector2D& vector) {
+            return pow(vector.xPos, 2) + pow(vector.yPos, 2);
+        }
+
+        // finds the scalar magnitude of this vector
+        [[nodiscard]] float vector_length() const {
+            return sqrt(length_squared());
+        }
+
+        [[nodiscard]] float vector_length(const Vector2D& vector) const {
+            float squared_value = length_squared_vector(vector);
+            return sqrt(squared_value);
         }
 
         // dot product
