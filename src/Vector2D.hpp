@@ -137,6 +137,19 @@ namespace physics {
             this->yPos = y;
         }
 
+        /**
+         * normalising a vector (making its length/magnitude exactly 1)
+         */
+        void normalise() {
+            float length = vector_length();
+
+            if (length > 0) {
+                float sqrt_length = sqrt(length);
+                this->xPos /= sqrt_length;
+                this->yPos /= sqrt_length;
+            }
+        }
+
         // dot product
         [[nodiscard]] float dot_product(const Vector2D dotVector) const {
             return (this->xPos * dotVector.xPos + this->yPos * dotVector.yPos);
